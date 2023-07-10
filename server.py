@@ -2,7 +2,7 @@ import socket
 import threading
 
 HOST = 'localhost'
-PORT = 4444
+PORT = 8000
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((HOST, PORT))

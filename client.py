@@ -1,14 +1,23 @@
 import socket
+import threading
+from tkinter import *
+import tkinter
+from tkinter import simpledialog
 
-HOST = 'localhost'
-PORT = 4444
+class Chat:
+    def __init__(self) -> None:
+        HOST = 'localhost'
+        PORT = 8000
+            # criando o cliente
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            # conectando o cliente ao servidor
+        client.connect((HOST, PORT))
 
-    # criando o cliente
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    # conectando o cliente ao servidor
-client.connect((HOST, PORT))
+        self.janela_carregada = False
+        self.ativo = True
+        self.nome = simpledialog.askstring('Nome', 'Digite seu nome!', parent=login)
+        self.sala = simpledialog.askstring('Sala', 'Digite a sala em que quer entrar!', parent=login)
 
-mensadem_do_servidor = client.recv(1024)
-if mensadem_do_servidor == b'sala':
-    client.send(b'jogos') # sala
-    client.send(b'lazaro') # nome do client
+
+    
+chat = Chat()
